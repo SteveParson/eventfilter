@@ -1,15 +1,18 @@
-# Data sorting and filtering
+# Event Filter
 
-Read the 3 input files reports.json, reports.csv, reports.xml and output a combined CSV file with the following characteristics:
+This program aggregates an arbitrary number of reports following a common pre-specified schema into one CSV file.
 
-- The same column order and formatting as reports.csv
-- All report records with packets-serviced equal to zero should be excluded
-- records should be sorted by request-time in ascending order
+## Compiling
+Project management is handled by `maven`. An executable JAR can be created by issuing the following command from the root folder of the repository: `mvn clean compile assembly:single`
+ 
+The executable JAR can be executed as follows: 
+- `java -jar target/eventfilter-1.0-SNAPSHOT-jar-with-dependencies.jar <output> <inputs>`
+- where `<output>` is the destination file of the aggregated report.
+- and `<inputs>` is a space-separated list of files that you would like to aggregate
 
-Additionally, the application should print a summary showing the number of records in the output file associated with each service-guid.
+i.e. `java -jar target/eventfilter-1.0-SNAPSHOT-jar-with-dependencies.jar output.csv reports.csv reports.json reports.xml`
 
-Please provide source, documentation on how to run the program and an explanation on why you chose the tools/libraries used.
-
-## Submission
-
-You may fork this repo, commit your work and let us know of your project's location, or you may email us your project files in a zip file.
+## Justifications
+- I used `maven` because it is an industry standard dependency and project management tool.
+- `commons-csv`, `json-simple`, and `dom4j` appears to be a commonly used libraries for parsing CSV, JSON, and XML respectively, however it would be straightforward to swap out these libraries for something else.
+- I pinned the output timezone to `GMT-04:00` because the use of three-letter time zone IDs is [deprecated](https://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html).
