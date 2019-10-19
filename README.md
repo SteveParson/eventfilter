@@ -14,5 +14,5 @@ i.e. `java -jar target/eventfilter-1.0-SNAPSHOT-jar-with-dependencies.jar output
 
 ## Justifications
 - I used `maven` because it is an industry standard dependency and project management tool.
-- `commons-csv`, `json-simple`, and `dom4j` appears to be a commonly used libraries for parsing CSV, JSON, and XML respectively, however it would be straightforward to swap out these libraries for something else.
+- `commons-csv`, `json-simple`, and `dom4j` appear to be commonly used libraries for parsing CSV, JSON, and XML respectively, however it would be straightforward to swap these libraries for something else.
 - I pinned the output timezone to `GMT-04:00` because the use of three-letter time zone IDs is [deprecated](https://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html).
